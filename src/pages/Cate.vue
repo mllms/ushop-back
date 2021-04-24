@@ -43,7 +43,7 @@ export default {
       this.cateCheList = this.cateList[val].children
     },
     go(id){
-      this.$router.push("goodslist?id="+id)
+      this.$router.push("goodslist?id="+id+"&fid="+(this.activeKey*1+1))
     }
   },
   components: {},
