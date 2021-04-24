@@ -5,8 +5,8 @@
       left-text="返回"
       right-text="注册"
       left-arrow
-      @click-left="onClickLeft"
-      @click-right="onClickRight"
+      @click-left="$router.back()"
+      @click-right="$router.push('/regist')"
     />
     <van-form @submit="onSubmit">
       <van-field
@@ -34,27 +34,30 @@
 </template>
 
 <script>
-import { sendLoginInfo } from '../request/api'
+import { sendLoginInfo } from "../request/api";
 export default {
   data() {
     return {
-      loginInfo:{
-        phone:"",
-        password:""
-      }
+      loginInfo: {
+        phone: "",
+        password: "",
+      },
     };
   },
   created() {},
   methods: {
-    onClickRight() {},
+    onClickRight() {
+      this.$router.push("/regist");
+    },
     onClickLeft() {},
     async onSubmit() {
-      
-      let res = await sendLoginInfo(this.loginInfo)
-      if(res.code===200){
-        this.$toast('登陆成功');
-        localStorage.setItem('loginInfo',JSON.stringify(res.list))
-        this.$router.push('/user')
+      let res = await sendLoginInfo(this.loginInfo);
+      if (res.code === 200) {
+        this.$toast(res.msg);
+        localStorage.setItem("loginInfo", JSON.stringify(res.list));
+        this.$router.push("/user");
+      } else {
+        this.$toast(res.msg);
       }
     },
   },

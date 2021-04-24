@@ -13,12 +13,16 @@ if(process.env.NODE_ENV== "development"){
 
 axios.interceptors.request.use((config)=>{
   // 获取localStorage里面的对象
-  let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
-  config.headers.authorization = userInfo.token
+  let loginInfo = JSON.parse(localStorage.getItem('loginInfo') || '{}')
+  config.headers.authorization = loginInfo.token
   return config
 })
 
 axios.interceptors.response.use((response)=>{
+  // if(response.code===403){
+  //   this.$toast(response.msg)
+  //   this.$router.push('/login')
+  // }
   return response.data
 })
 

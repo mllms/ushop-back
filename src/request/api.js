@@ -19,3 +19,34 @@ export function sendLoginInfo(data){
   let res = axios.post('login',data)
   return res
 }
+// 获取购物车列表
+export function getCartList(uid){
+  let res = axios.get('cartlist',{
+    params:{
+      uid:uid
+    }
+  })
+  return res
+}
+// 购物增加
+export function acrtAdd(id,uid,n){
+  let res = axios.post('cartadd',{goodsid:id,uid:uid,num:n})
+  return res
+}
+// 购物车修改
+export function acrtEdit(id,n){
+  let res = axios.post('cartedit',{id:id,type:n})
+  return res
+}
+// 购物车删除
+export function acrtDelete(id){
+  let res = axios.post('cartdelete',{id:id})
+  return res
+}
+// 会员注册
+export function registerInfo(data){
+
+  let res = axios.post('register',data)
+  return res
+}
+

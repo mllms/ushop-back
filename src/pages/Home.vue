@@ -15,8 +15,8 @@
           :title="item.goodsname"
           :thumb="$imgBaseUrl + item.img"
         >
-          <template #footer>
-            <van-button size="small" type="primary" icon="cart-o"></van-button>
+          <template  #footer>
+            <van-button size="small" type="primary" icon="cart-o" @click="add(item.id)"></van-button>
           </template>
         </van-card>
       </van-tab>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { getBannerList, getGoodsList } from "../request/api";
+import { getBannerList, getGoodsList,acrtAdd } from "../request/api";
 export default {
   data() {
     return {
@@ -65,9 +65,16 @@ export default {
     this.bannerList = res.list;
     let goods = await getGoodsList();
     this.goodsList = goods.list;
-    console.log(this.goodsList);
+    
   },
-  methods: {},
+  methods: {
+    async add(val){
+      let n=1
+      let uid =JSON.parse (localStorage.getItem('loginInfo')||'{}').uid
+      let res = await acrtAdd(val,uid,n)
+      console.log(res)
+    }
+  },
   components: {},
 };
 </script>

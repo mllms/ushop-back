@@ -4,8 +4,10 @@ import Router from 'vue-router'
 let Home =()=> import ('../pages/Home') 
 let Cate =()=> import ('../pages/Cate') 
 let Cart =()=> import ('../pages/Cart') 
-let User =()=> import ('../pages/User') 
+let User =()=> import ('../pages/User')
 let Login =()=> import ('../pages/Login') 
+let Regist =()=> import ('../pages/Regist') 
+let Goods =()=> import ('../pages/Goods') 
 
 Vue.use(Router)
 
@@ -48,6 +50,20 @@ let router = new Router({
       component:Login,
       meta:{
         title:"登录"
+      }
+    },
+    {
+      path: '/regist',
+      component:Regist,
+      meta:{
+        title:"注册"
+      }
+    },
+    {
+      path: '/goodslist',
+      component:Goods,
+      meta:{
+        title:"商品分类"
       }
     }
   ]

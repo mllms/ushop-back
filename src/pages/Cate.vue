@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <van-nav-bar title="标题" />
+    <van-nav-bar title="商品分类" />
     <div class="inner">
       <div class="left">
         <van-sidebar v-model="activeKey" @change="change" >
@@ -13,8 +13,9 @@
       </div>
       <div class="right">
         <van-grid :border="false" :column-num="3">
-          <van-grid-item v-for="item in cateCheList" :key="item.id">
+          <van-grid-item v-for="item in cateCheList" :key="item.id" @click="go(item.id)" >
             <van-image :src="$imgBaseUrl + item.img" />
+            <h5>{{item.catename}}</h5>
           </van-grid-item>
         </van-grid>
       </div>
@@ -40,6 +41,9 @@ export default {
   methods: {
     change(val){
       this.cateCheList = this.cateList[val].children
+    },
+    go(id){
+      this.$router.push("goodslist?id="+id)
     }
   },
   components: {},

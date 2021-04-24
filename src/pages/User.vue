@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <van-nav-bar
-      title="标题"
+      title="个人中心"
       left-text="返回"
       left-arrow
       @click-left="$router.back()"
