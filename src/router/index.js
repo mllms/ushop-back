@@ -65,8 +65,10 @@ let router = new Router({
       meta:{
         title:"商品分类"
       }
-    }
-  ]
+    },
+    
+  ],
+  
 })
 // 设置全局前置守卫
 router.beforeEach((to,from,next)=>{

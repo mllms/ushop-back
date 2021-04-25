@@ -50,13 +50,13 @@ export function registerInfo(data){
   return res
 }
 
-export function getCateGoods(sid,fid){
-  console.log(sid,fid)
+export function getCateGoods(sid){
+  console.log(sid)
   let res = axios.get('getcategoods',{
     params:{
       
       sid:sid,
-      fid:fid,
+      // fid:fid,
     }})
   return res
 }

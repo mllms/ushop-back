@@ -27,6 +27,11 @@
         >
       </template>
     </van-card>
+    <van-submit-bar
+      :price="totalPrice"
+      button-text="提交订单"
+      @submit="onSubmit"
+    />
   </div>
 </template>
 
@@ -44,7 +49,7 @@ export default {
     };
   },
   async created() {
-    this.getList()
+    this.getList();
   },
   methods: {
     onClickLeft() {
@@ -61,15 +66,31 @@ export default {
     async del(id) {
       let res = await acrtDelete(id);
       if (res.code === 200) {
-        this.getList()
+        this.getList();
       }
+    },
+    onSubmit() {
+      console.log(this.cartList[0].price);
     },
   },
   components: {},
+  computed: {
+    totalPrice() {
+      // 获取总价
+      let sum = 0;
+      for (let k in this.cartList) {
+        sum += this.cartList[k].price * this.cartList[k].num * 100;
+      }
+      return sum;
+    },
+  },
 };
 </script>
 <style scoped>
 .van-button--mini {
   margin-top: 10px;
+}
+.van-submit-bar {
+  margin-bottom: 50px;
 }
 </style>

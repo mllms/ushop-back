@@ -72,7 +72,7 @@ export default {
   async created() {
     let sid = this.$route.query.id;
     let fid = this.$route.query.fid;
-    let res = await getCateGoods(sid,fid);
+    let res = await getCateGoods(sid);
     this.goodsList = res.list.list;
   },
   /**
